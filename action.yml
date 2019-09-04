@@ -1,6 +1,9 @@
 name: 'Tests'
-description: 'Get started with Node actions'
+description: 'Run tests'
 author: 'optimaxdev'
+inputs:
+  token:
+    description: 'GitHub token'
 runs:
   using: 'node12'
   main: 'lib/main.js'
