@@ -1,4 +1,4 @@
-import * as core from '@actions/core';
+// import * as core from '@actions/core';
 import * as github from '@actions/github';
 
 async function run() {
@@ -7,7 +7,7 @@ async function run() {
     console.log(context);
     
   } catch (error) {
-    core.setFailed(error.message);
+    console.log(error);
   }
 }
 
