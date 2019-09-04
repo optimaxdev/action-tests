@@ -11,9 +11,10 @@ async function run() {
     const {owner, repo} = context.repo;
     if (context.payload.pull_request) {
       const {number, changed_files = 0} = context.payload.pull_request;
+      await exec.exec('yarn');
 
       if (changed_files > 100) {
-        await exec.exec('yarn && yarn test');
+        await exec.exec('yarn test');
       } else {
         const {data: files} = await api.pulls.listFiles({
           owner,
@@ -21,8 +22,7 @@ async function run() {
           pull_number: number
         });
         const fileNames = filterFiles(files);
-        await exec.exec('yarn');
-        await exec.exec('yarn jest --findRelatedTests ./modules/components/blog/blogTitle/blogTitle.jsx');
+        await exec.exec(`yarn jest --findRelatedTests ${fileNames.join(' ')}`);
       }
     }
     
