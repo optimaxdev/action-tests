@@ -1,6 +1,7 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import * as exec from '@actions/exec';
+import {filterFiles} from './utils';
 
 async function run() {
   try {
@@ -14,14 +15,13 @@ async function run() {
       if (changed_files > 100) {
         exec.exec('yarn && yarn test');
       } else {
-        const files = await api.pulls.listFiles({
+        const {data: files} = await api.pulls.listFiles({
           owner,
           repo,
           pull_number: number
         });
-
-        console.log(files);
-        
+        const fileNames = filterFiles(files);
+        exec.exec('yarn && yarn jest --findRelatedTests ./modules/components/blog/blogTitle/blogTitle.jsx')
       }
     }
     
