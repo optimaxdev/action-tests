@@ -9,10 +9,11 @@ async function run() {
     const context = github.context;
     const api = new github.GitHub(gitHubToken);
     const {owner, repo} = context.repo;
+
     if (context.payload.pull_request) {
       const {number, changed_files = 0} = context.payload.pull_request;
-      await exec.exec(`git config --global url."https://${gitHubToken}@github.com/".insteadOf ssh://git@github.com/`);
-      await exec.exec('yarn');
+      // await exec.exec(`git config --global url."https://${gitHubToken}@github.com/".insteadOf ssh://git@github.com/`);
+      // await exec.exec('yarn');
 
       if (changed_files > 100) {
         await exec.exec('yarn test');
@@ -23,7 +24,7 @@ async function run() {
           pull_number: number
         });
         const fileNames = filterFiles(files);
-        await exec.exec(`yarn jest --findRelatedTests ${fileNames.join(' ')}`);
+        await exec.exec(`yarn jest ${fileNames.length > 0 ? '--findRelatedTests': ''} ${fileNames.join(' ')}`);
       }
     }
     
