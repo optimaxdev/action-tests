@@ -12,8 +12,7 @@ async function run() {
 
     if (context.payload.pull_request) {
       const {number, changed_files = 0} = context.payload.pull_request;
-      // await exec.exec(`git config --global url."https://${gitHubToken}@github.com/".insteadOf ssh://git@github.com/`);
-      // await exec.exec('yarn');
+      let command = '--maxWorkers=4'
 
       if (changed_files > 100) {
         await exec.exec('yarn test');
@@ -26,6 +25,8 @@ async function run() {
         const fileNames = filterFiles(files);
         await exec.exec(`yarn jest ${fileNames.length > 0 ? '--findRelatedTests': ''} ${fileNames.join(' ')}`);
       }
+    } else {
+      throw new Error('It seems like you run this action not on PR');
     }
     
   } catch (error) {
