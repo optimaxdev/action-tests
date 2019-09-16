@@ -12,7 +12,6 @@ async function run() {
 
     if (context.payload.pull_request) {
       const {number, changed_files = 0} = context.payload.pull_request;
-      let command = '--maxWorkers=4'
 
       if (changed_files > 100) {
         await exec.exec('yarn test');
@@ -23,7 +22,7 @@ async function run() {
           pull_number: number
         });
         const fileNames = filterFiles(files);
-        await exec.exec(`yarn jest ${fileNames.length > 0 ? '--findRelatedTests': ''} ${fileNames.join(' ')}`);
+        await exec.exec(`yarn jest ${fileNames.length > 0 ? '--findRelatedTests': '--maxWorkers=4'} ${fileNames.join(' ')}`);
       }
     } else {
       throw new Error('It seems like you run this action not on PR');
