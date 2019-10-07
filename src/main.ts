@@ -22,7 +22,7 @@ async function run() {
           pull_number: number
         });
         const fileNames = filterFiles(files);
-        await exec.exec(`yarn jest ${fileNames.length > 0 ? '--findRelatedTests': ''}--maxWorkers=4 ${fileNames.join(' ')}`);
+        await exec.exec(`yarn jest ${fileNames.length > 0 ? '--findRelatedTests': ''} --maxWorkers=4 ${fileNames.join(' ')}`);
       }
     } else {
       throw new Error('It seems like you run this action not on PR');
