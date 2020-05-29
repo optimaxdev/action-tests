@@ -4,6 +4,15 @@ author: 'optimaxdev'
 inputs:
   token:
     description: 'GitHub token'
+    required: true
+  working-directory:
+    description: 'Working directory for action'
+    required: false
+    default: ''
+  jest-flags:
+    description: 'Jest CLI flags'
+    required: false
+    default: ''
 runs:
   using: 'node12'
   main: 'lib/main.js'
