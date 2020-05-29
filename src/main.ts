@@ -7,7 +7,7 @@ async function run() {
   try {
     const gitHubToken = core.getInput('token', {required: true});
     const path = core.getInput('working-directory', {required: false});
-    const flags = core.getInput('jest-flags', {required: false});
+    const flags = core.getInput('jest-flags', {required: false}).split(' ').map(flag => flag.trim());
 
     const context = github.context;
     const api = new github.GitHub(gitHubToken);
@@ -16,12 +16,10 @@ async function run() {
     if (context.payload.pull_request) {
       const {number, changed_files = 0} = context.payload.pull_request;
 
-      if (path) {
-        await exec.exec(`cd ${path}`);
-      }
+      const exacOptions = {cwd: path || './'}
 
       if (changed_files > 100) {
-        await exec.exec(`yarn test ${flags}`);
+        await exec.exec('yarn', ['test', ...flags], exacOptions);
       } else {
         const {data: files} = await api.pulls.listFiles({
           owner,
@@ -29,7 +27,7 @@ async function run() {
           pull_number: number
         });
         const fileNames = filterFiles(files);
-        await exec.exec(`yarn jest ${flags} ${fileNames.length > 0 ? '--findRelatedTests': ''} ${fileNames.join(' ')}`);
+        await exec.exec('yarn', ['jest', ...flags, fileNames.length > 0 ? '--findRelatedTests': '', ...fileNames], exacOptions);
       }
     } else {
       throw new Error('It seems like you run this action not on PR');
