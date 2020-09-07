@@ -1,3 +1,3 @@
-const {SummaryReporter} = require('@jest/reporters');
+import {SummaryReporter} from '@jest/reporters';
 
 export default SummaryReporter;
