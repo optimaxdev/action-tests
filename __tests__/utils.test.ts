@@ -25,22 +25,8 @@ describe('Utils', () => {
 
   describe('getIsRunAllTests function', () => {
     it('should return true if files on the root level were passed', () => {
-        const files: Partial<Octokit.PullsListFilesResponseItem>[] = [
-            {
-                filename: '/package.json'
-            },
-            {
-                filename: 'modules/oneMoreFile.js'
-            },
-            {
-                filename: 'modules/anotherFile.jsx'
-            }, 
-            {
-                filename: 'modules/oneMoreFile.tsx'
-            },
-        ];
-
-        expect(getIsRunAllTests(files as Octokit.PullsListFilesResponseItem[])).toBe(true);
+        expect(getIsRunAllTests([{filename: '/package.json'}] as Octokit.PullsListFilesResponseItem[])).toBe(true);
+        expect(getIsRunAllTests([{filename: 'package.json'}] as Octokit.PullsListFilesResponseItem[])).toBe(true);
     });
 
     it('should return false if files from another folders were passed', () => {
@@ -52,7 +38,7 @@ describe('Utils', () => {
                 filename: '__specs__/someFile.ts'
             }, 
             {
-                filename: 'modules/anotherFile.jsx'
+                filename: 'modules/anotherDir/anotherfile.jsx'
             }, 
             {
                 filename: 'modules/oneMoreFile.tsx'
