@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import * as exec from '@actions/exec';
 import pathModule from 'path';
-import {filterFiles} from './utils';
+import {filterFiles, getIsRunAllTests} from './utils';
 import failedReporter from './jest-reporters/failed-reporter.js';
 import summaryReporter from './jest-reporters/summary-reporter.js';
 
@@ -34,16 +34,29 @@ async function run() {
         '--reporters', pathModule.resolve(__dirname, './jest-reporters/summary-reporter.js'),
       ];
 
+      /**
+       * Run all unit tests
+       *
+       */
+      async function runAllTests() {
+        exec.exec('yarn', ['test', ...flags, ...reportersCMD], exacOptions);
+      }
+
       if (changed_files > 100) {
-        await exec.exec('yarn', ['test', ...flags, ...reportersCMD], exacOptions);
+        await runAllTests();
       } else {
         const {data: files} = await api.pulls.listFiles({
           owner,
           repo,
           pull_number: number
         });
-        const fileNames = filterFiles(files);
-        await exec.exec('yarn', ['jest', ...flags, fileNames.length > 0 ? '--findRelatedTests': '', ...fileNames, ...reportersCMD], exacOptions);
+
+        if(getIsRunAllTests(files)) {
+          await runAllTests();
+        } else {
+          const fileNames = filterFiles(files);
+          await exec.exec('yarn', ['jest', ...flags, fileNames.length > 0 ? '--findRelatedTests': '', ...fileNames, ...reportersCMD], exacOptions);
+        }
       }
     } else {
       throw new Error('It seems like you run this action not on PR');
