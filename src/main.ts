@@ -39,7 +39,7 @@ async function run() {
        *
        */
       async function runAllTests() {
-        exec.exec('yarn', ['test', ...flags, ...reportersCMD], exacOptions);
+        await exec.exec('yarn', ['test', ...flags, ...reportersCMD], exacOptions);
       }
 
       if (changed_files > 100) {
