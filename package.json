@@ -37,5 +37,10 @@
   "peerDependencies": {
     "@jest/reporters": "^24.8.0",
     "@jest/test-result": "^24.8.0"
+  },
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=7.0.0",
+    "yarn": "\n\nYARN DEPRECATED, USE NPM INSTEAD OF YARN\n\nplease install the latest version of node ^15.11\non https://nodejs.org/en/download/current/\nor using nvm install 15 && nvm alias default 15\n"
   }
 }
