@@ -39,7 +39,7 @@ async function run() {
        *
        */
       async function runAllTests() {
-        await exec.exec('yarn', ['test', ...flags, ...reportersCMD], exacOptions);
+        await exec.exec('npm run', ['test', ...flags, ...reportersCMD], exacOptions);
       }
 
       if (changed_files > 100) {
@@ -55,7 +55,7 @@ async function run() {
           await runAllTests();
         } else {
           const fileNames = filterFiles(files);
-          await exec.exec('yarn', ['jest', ...flags, fileNames.length > 0 ? '--findRelatedTests': '', ...fileNames, ...reportersCMD], exacOptions);
+          await exec.exec('jest', [...flags, fileNames.length > 0 ? '--findRelatedTests': '', ...fileNames, ...reportersCMD], exacOptions);
         }
       }
     } else {
