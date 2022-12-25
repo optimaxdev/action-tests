@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@actions/core@^1.0.0":
+"@actions/core@=1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.0.0.tgz#4a090a2e958cc300b9ea802331034d5faf42d239"
   integrity sha512-aMIlkx96XH4E/2YZtEOeyrYQfhlas9jIRkfGPqMwXD095Rdkzo4lB6ZmbxPQSzD+e1M+Xsm98ZhuSMYGv/AlqA==
 
-"@actions/exec@^1.0.0":
+"@actions/exec@=1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@actions/exec/-/exec-1.0.0.tgz#70c8b698c9baa02965c07da5f0b185ca56f0a955"
   integrity sha512-nquH0+XKng+Ll7rZfCojN7NWSbnGh+ltwUJhzfbLkmOJgxocGX2/yXcZLMyT9fa7+tByEow/NSTrBExNlEj9fw==
 
-"@actions/github@^1.0.1":
+"@actions/github@=1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@actions/github/-/github-1.0.1.tgz#fac9eaa0b1b14a57eacb410dc9d674e632ceb1e6"
   integrity sha512-fmji0JB0E4vmtXVjnqCJouLP4AyM/B5nbLe9U9ooPerxXh9r+VBlx8Lh5c+Dlvux1GooUduQxy4XVA21Lfs/Wg==
@@ -342,7 +342,7 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
-"@octokit/rest@^16.15.0":
+"@octokit/rest@=16.28.9", "@octokit/rest@^16.15.0":
   version "16.28.9"
   resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.28.9.tgz#ac8c5f3ff305e9e0a0989a5245e4286f057a95d7"
   integrity sha512-IKGnX+Tvzt7XHhs8f4ajqxyJvYAMNX5nWfoJm4CQj8LZToMiaJgutf5KxxpxoC3y5w7JTJpW5rnWnF4TsIvCLA==
@@ -3431,9 +3431,9 @@ throat@^4.0.0:
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
 
 tmpl@1.0.x:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
-  integrity sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE=
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
+  integrity sha512-3f0uOEAQwIqGuWW2MVzYg8fV/QNnc/IpuJNG837rLuczAaLVHslWHZQj4IGiEl5Hs3kkbhwL9Ab7Hrsmuj+Smw==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
