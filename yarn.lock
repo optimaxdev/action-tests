@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@actions/core@^1.0.0":
+"@actions/core@=1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@actions/core/-/core-1.0.0.tgz#4a090a2e958cc300b9ea802331034d5faf42d239"
   integrity sha512-aMIlkx96XH4E/2YZtEOeyrYQfhlas9jIRkfGPqMwXD095Rdkzo4lB6ZmbxPQSzD+e1M+Xsm98ZhuSMYGv/AlqA==
 
-"@actions/exec@^1.0.0":
+"@actions/exec@=1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@actions/exec/-/exec-1.0.0.tgz#70c8b698c9baa02965c07da5f0b185ca56f0a955"
   integrity sha512-nquH0+XKng+Ll7rZfCojN7NWSbnGh+ltwUJhzfbLkmOJgxocGX2/yXcZLMyT9fa7+tByEow/NSTrBExNlEj9fw==
 
-"@actions/github@^1.0.1":
+"@actions/github@=1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@actions/github/-/github-1.0.1.tgz#fac9eaa0b1b14a57eacb410dc9d674e632ceb1e6"
   integrity sha512-fmji0JB0E4vmtXVjnqCJouLP4AyM/B5nbLe9U9ooPerxXh9r+VBlx8Lh5c+Dlvux1GooUduQxy4XVA21Lfs/Wg==
@@ -342,7 +342,7 @@
     once "^1.4.0"
     universal-user-agent "^4.0.0"
 
-"@octokit/rest@^16.15.0":
+"@octokit/rest@=16.28.9", "@octokit/rest@^16.15.0":
   version "16.28.9"
   resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-16.28.9.tgz#ac8c5f3ff305e9e0a0989a5245e4286f057a95d7"
   integrity sha512-IKGnX+Tvzt7XHhs8f4ajqxyJvYAMNX5nWfoJm4CQj8LZToMiaJgutf5KxxpxoC3y5w7JTJpW5rnWnF4TsIvCLA==
@@ -2884,9 +2884,9 @@ punycode@^2.1.0, punycode@^2.1.1:
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
+  integrity sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==
 
 rc@^1.2.7:
   version "1.2.8"
