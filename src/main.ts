@@ -17,22 +17,23 @@ async function run() {
     throw new Error('Summary reporter does not exists');
   }
 
-  const {gitHubToken} = getOptions();
+  const {gitHubToken, flagsOnRelatedRun} = getOptions();
 
   const prChangedFiles = await getPullRequestTargetFilesByAPI(gitHubToken);
   const testableFiles = filterFiles(prChangedFiles);
 
-  if (
-    prChangedFiles.length > 100 ||
-    isRootFilesTouched(prChangedFiles) ||
-    testableFiles.length === 0
-  ) {
+  const isRunningAllTests =
+    prChangedFiles.length > 100 || isRootFilesTouched(prChangedFiles) || testableFiles.length === 0;
+
+  core.setOutput('isRunningOnlyRelated', String(!isRunningAllTests));
+
+  if (isRunningAllTests) {
     // Run all tests
     return await runJestTests();
   }
 
   // Run only affected files
-  return await runJestTests(['--findRelatedTests', ...testableFiles]);
+  return await runJestTests([...flagsOnRelatedRun, '--findRelatedTests', ...testableFiles]);
 }
 
 run().catch(reportError);

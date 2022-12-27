@@ -13,6 +13,13 @@ inputs:
     description: 'Jest CLI flags'
     required: false
     default: ''
+  flags-on-related-files-run:
+    description: 'Flags that apply only on run with related files'
+    required: false
+    default: ''
+outputs:
+  isRunningOnlyRelated:
+    description: 'Does job tested only related files'
 runs:
   using: 'node12'
   main: 'lib/main.js'
