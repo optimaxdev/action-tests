@@ -3,7 +3,7 @@ import Octokit = require('@octokit/rest');
 /**
  * Return should we run all unit tests or not.
  * We should run all tests if some files on the root level were touched
- * for example "package.json", but shouldn't handle in specific way changes in 
+ * for example "package.json", but shouldn't handle in specific way changes in
  * __specs__ or any another directory.
  *
  * @export
@@ -15,7 +15,7 @@ export function getIsRunAllTests(files: Octokit.PullsListFilesResponseItem[]): b
 }
 
 /**
- * Return list of non-test files from modules folder that was touched in PR
+ * Return list of files from modules folder that was touched in PR
  *
  * @export
  * @param {Octokit.PullsListFilesResponseItem[]} files
@@ -24,5 +24,5 @@ export function getIsRunAllTests(files: Octokit.PullsListFilesResponseItem[]): b
 export function filterFiles(files: Octokit.PullsListFilesResponseItem[]): string[] {
   return files
     .map(file => file.filename)
-    .filter(name => !name.match(/(\.test\.)|(\.snap\.)/) && name.includes('modules'))
+    .filter(name => name.includes('modules'))
 }
