@@ -1,5 +1,6 @@
 .idea
 __tests__/runner/*
+*/.DS_Store
 
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
