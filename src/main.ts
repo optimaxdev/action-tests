@@ -6,6 +6,8 @@ import {filterFiles, getIsRunAllTests} from './utils';
 import failedReporter from './jest-reporters/failed-reporter.js';
 import summaryReporter from './jest-reporters/summary-reporter.js';
 
+const FILES_PER_PAGE = 100;
+
 async function run() {
   try {
     // TODO - it's used to parse it with typescript
@@ -48,7 +50,8 @@ async function run() {
         const {data: files} = await api.pulls.listFiles({
           owner,
           repo,
-          pull_number: number
+          pull_number: number,
+          per_page: FILES_PER_PAGE,
         });
 
         if(getIsRunAllTests(files)) {
